@@ -1,4 +1,5 @@
 import Task from "@/models/Task";
+import User from "@/models/User";
 import { dbConnect } from "@/utils/mongoose";
 
 dbConnect();
@@ -9,7 +10,21 @@ export default async function handler(req, res) {
     case "GET":
       try {
         const tasks = await Task.find();
-        return res.status(200).json(tasks);
+
+        const tasksWithtUser = await Promise.all(
+          tasks.map(async (item)=> {
+            const user= await User.findById(item.userId);
+            return {
+              ...item._doc,
+              userName: user.name
+            }
+          })
+        );
+
+        console.log()
+
+
+        return res.status(200).json(tasksWithtUser);
       } catch (error) {
         return res.status(500).json({ error: error.message });
       }

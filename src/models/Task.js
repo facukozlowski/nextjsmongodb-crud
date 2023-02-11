@@ -13,6 +13,10 @@ const taskSchema = new Schema ({
         required: true,
         trim: true,
         maxlegth: [200, 'Description must be less than 200 characters']
+    },
+    userId: {
+        type: String,
+        required: true,
     }
 }, 
 {
