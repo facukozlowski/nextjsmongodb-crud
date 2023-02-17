@@ -29,7 +29,7 @@ export default async (req, res) => {
             if (!task) return res.status(404).json({msg:"Task not found"});
             return res.status(200).json(task);
         } catch (error) {
-            return res.status(500).json({msg:"error.message"});
+            return res.status(500).json({msg:error.message});
         }
     case "DELETE":
         try {
@@ -37,7 +37,7 @@ export default async (req, res) => {
            if (!deletedTask) return res.status(404).json({msg: "Task not found"});
            return res.status(204).json();
         } catch (error) {
-            return res.status(400).json({msg: "error.message"});
+            return res.status(400).json({msg: error.message});
         }
     default:
       return res.status(400).json({ msg: "this method is not supported" });

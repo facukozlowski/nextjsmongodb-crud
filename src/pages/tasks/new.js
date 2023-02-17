@@ -138,7 +138,6 @@ const NewTask = ({users}) => {
                       <select
                        name="userId"
                        onChange={handleChange}
-                       value={newTask.userId}
                        error={
                         errors.userId
                           ? { content: "Please choice a user", pointing: "below" }

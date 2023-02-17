@@ -43,6 +43,7 @@ const Task = ({ task, error }) => {
         <Grid.Column textAlign="center">
           <h1>{task.title}</h1>
           <p>{task.description}</p>
+
           <div>
             <Button color="red" onClick={open} loading={isDeleting}>
               Delete
@@ -53,7 +54,7 @@ const Task = ({ task, error }) => {
 
       {/* Confirm modal */}
       <Confirm
-        content={`Are you sure to delete the task ${task._id}`}
+        content={`Are you sure to delete the task ${task.title}`}
         header="Please confirm"
         open={confirm}
         onConfirm={handleDelete}

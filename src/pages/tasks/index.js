@@ -4,15 +4,14 @@ import {useRouter} from 'next/router'
 export default function HomePage({ tasks }) {
 
   const router = useRouter();
-
-  if (tasks.legth === 0) return (
+  if (tasks.length === 0) return (
     <Grid centered verticalAlign="middle" columns={1} style={{heigth:"80vh"}}>
       <Grid.Row>
         <Grid.Column  textAlign="center">
           <h1>There are no tasks yet</h1>
           <img src="https://vectorified.com/images/no-data-icon-15.png"/>
           <div>
-            <Button primary>
+            <Button primary onClick={() => router.push("/tasks/new")}>
               Create a new Task
             </Button>
           </div>
@@ -55,7 +54,6 @@ export default function HomePage({ tasks }) {
   export const getServerSideProps = async (ctx) => {
     const res = await fetch('http://localhost:3000/api/tasks');
     const tasks = await res.json();
-
     return {
       props: {
         tasks,

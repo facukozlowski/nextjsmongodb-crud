@@ -1,9 +1,11 @@
-import { Button, Card, Container, Grid } from "semantic-ui-react";
+import { Button, Card, Container, Grid, Confirm, Loader } from "semantic-ui-react";
 import {useRouter} from 'next/router'
+import { useState } from "react";
 
 export default function HomePage({ users }) {
 
   const router = useRouter();
+
 
   if (users.legth === 0) return (
     <Grid centered verticalAlign="middle" columns={1} style={{heigth:"80vh"}}>
