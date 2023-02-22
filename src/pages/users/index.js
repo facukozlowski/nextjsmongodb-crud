@@ -6,7 +6,7 @@ export default function HomePage({ users }) {
 
   const router = useRouter();
 
-
+//Si no existen tareas creadas para el usuario, mostrar esto:
   if (users.legth === 0) return (
     <Grid centered verticalAlign="middle" columns={1} style={{heigth:"80vh"}}>
       <Grid.Row>
@@ -29,21 +29,16 @@ export default function HomePage({ users }) {
         {
           users.map(user => (
             <Card key={user._id}>
-              <Card.Content>
+              <Card.Content textAlign="center">
                 <Card.Header>{user.name}</Card.Header>
               </Card.Content>
-              <Card.Content extra>
-              <Button primary
-              onClick={() => router.push(`/users/${user._id}`)}
-              >View
-              </Button>
-              <Button primary
-              onClick={() => {
-                const URL = `/users/${user._id}/edit`;
-                router.push(URL)}
-            }
-              >Edit
-              </Button>
+              <Card.Content extra textAlign="center">
+              <div class="ui buttons" style={{ padding: "0.5rem" }}>
+              <button class="ui inverted green button" onClick={() => router.push(`/users/${user._id}`)}>View</button>
+              </div>
+              <div class="ui buttons" style={{ padding: "0.5rem" }}>
+              <button class="ui inverted secondary button" onClick={() => { const URL = `/users/${user._id}/edit`;router.push(URL)}}>Edit</button>
+              </div>
             </Card.Content>
             </Card>
         ))}

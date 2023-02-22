@@ -12,18 +12,14 @@ export const Navbar = () => {
       <Container>
        <Menu.Item>
           <Link href= "/" >
-          <img src="/favico.ico" />
+          <img src="/logo" />
           </Link>
         </Menu.Item>
         <Menu.Menu position="right">
             <Menu.Item>
-          <Button secondary size="mini" onClick={() => router.push('/tasks/new')}>
-            New task
-            </Button>
+            <button class="ui inverted button" onClick={() => router.push('/tasks/new')}>New task</button>
             <Menu.Item>
-            <Button primary size="mini" onClick={() => router.push('/users/new')}>
-            New User
-            </Button>
+            <button class="ui inverted button" onClick={() => router.push('/users/new')}>New user</button>
             </Menu.Item>
             </Menu.Item>
         </Menu.Menu>

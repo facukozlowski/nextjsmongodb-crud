@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button, Form, Grid, Loader } from "semantic-ui-react";
 import { useRouter } from "next/router";
 
-const NewTask = ({users}) => {
+const NewTask = ({ users }) => {
   const [newTask, setNewTask] = useState({
     title: "",
     description: "",
@@ -120,9 +120,9 @@ const NewTask = ({users}) => {
                     error={
                       errors.description
                         ? {
-                            content: "Please enter a Description",
-                            pointing: "below",
-                          }
+                          content: "Please enter a Description",
+                          pointing: "below",
+                        }
                         : null
                     }
                     label="Description"
@@ -131,29 +131,22 @@ const NewTask = ({users}) => {
                     onChange={handleChange}
                     value={newTask.description}
                   />
-                 
-                 
-                 
-              
-                      <select
-                       name="userId"
-                       onChange={handleChange}
-                       error={
-                        errors.userId
-                          ? { content: "Please choice a user", pointing: "below" }
-                          : null
-                      }>
-                        <option value="">Select</option>
-                      {users.map(user => (
-                          <option key={user._id} value={user._id}>{user.name}</option>
-                      ))}
-                      </select>
-                  
-                 
-                 
-                  <Button type="submit" primary>
-                    {query.id ? "Update" : "Save"}
-                  </Button>
+                  <select
+                    name="userId"
+                    onChange={handleChange}
+                    error={
+                      errors.userId
+                        ? { content: "Please choice a user", pointing: "below" }
+                        : null
+                    }>
+                    <option value="">Select</option>
+                    {users.map(user => (
+                      <option key={user._id} value={user._id}>{user.name}</option>
+                    ))}
+                  </select>
+                  <div class="ui buttons" style={{ padding: "2rem" }}>
+                    <button class="ui positive button">Save</button>
+                  </div>
                 </Form>
               )}
             </div>

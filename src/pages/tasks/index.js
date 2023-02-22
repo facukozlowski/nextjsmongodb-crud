@@ -27,20 +27,18 @@ export default function HomePage({ tasks }) {
         {
           tasks.map(task => (
             <Card key={task._id}>
-              <Card.Content>
+              <Card.Content textAlign="center">
                 <Card.Header>{task.title}</Card.Header>
                 <p>{task.description}</p>
                 <p>{task.userName}</p>
               </Card.Content>
-              <Card.Content extra>
-              <Button primary
-              onClick={() => router.push(`/tasks/${task._id}`)}
-              >View
-              </Button>
-              <Button primary
-              onClick={() => router.push(`/tasks/${task._id}/edit`)}
-              >Edit
-              </Button>
+              <Card.Content extra textAlign="center">
+              <div class="ui buttons" style={{ padding: "0.5rem" }}>
+              <button class="ui inverted green button" onClick={() => router.push(`/tasks/${task._id}`)}>View</button>
+              </div>
+              <div class="ui buttons" style={{ padding: "0.5rem" }}>
+              <button class="ui inverted secondary button" onClick={() => router.push(`/tasks/${task._id}/edit`)}>Edit</button>
+              </div>
             </Card.Content>
             </Card>
         ))}

@@ -57,20 +57,20 @@ const User = ({ user, error }) => {
         {
           user.tasks.map(task => (
             <Card key={task._id}>
-              <Card.Content>
+              <Card.Content textAlign="center">
                 <Card.Header>{task.title}</Card.Header>
+                <div style={{ marginTop: "1rem" }}>
                 <p>{task.description}</p>
+                </div>
                 <p>{task.userName}</p>
               </Card.Content>
-              <Card.Content extra>
-              <Button primary
-              onClick={() => router.push(`/tasks/${task._id}`)}
-              >View
-              </Button>
-              <Button primary
-              onClick={() => router.push(`/tasks/${task._id}/edit`)}
-              >Edit
-              </Button>
+              <Card.Content extra textAlign="center">
+                <div class="ui buttons" style={{ padding: "0.5rem" }}>
+              <button class="ui inverted green button" onClick={() => router.push(`/tasks/${task._id}`)}>View</button>
+              </div>
+              <div class="ui buttons" style={{ padding: "0.5rem" }}>
+              <button class="ui inverted secondary button" onClick={() => router.push(`/tasks/${task._id}/edit`)}>Edit</button>
+              </div>
             </Card.Content>
             </Card>
         ))}
@@ -78,11 +78,11 @@ const User = ({ user, error }) => {
         <Grid.Row>
         <Grid.Column textAlign="center">
           <h1>{user.title}</h1>
+          <Card.Content>
           <div>
-            <Button color="red" onClick={open} loading={isDeleting}>
-              Delete User
-            </Button>
+          <button class="ui inverted red button" onClick={open} loading={isDeleting}>Delete user</button>   
           </div>
+          </Card.Content>
         </Grid.Column>
        </Grid.Row>
         </Container>
@@ -96,10 +96,7 @@ const User = ({ user, error }) => {
         onCancel={close}
       />
     </Container>
-    
   );
-
-
 
   return (
     <Grid
@@ -111,7 +108,7 @@ const User = ({ user, error }) => {
 
       {/* Confirm modal */}
       <Confirm
-        content={`you sure to delete the user ${user._id}`}
+        content={`you sure to delete the user ${user.name}`}
         header="Please confirm"
         open={confirm}
         onConfirm={handleDelete}

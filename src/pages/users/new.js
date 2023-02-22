@@ -108,9 +108,9 @@ const NewUser = () => {
                     value={NewUser.name}
                     autoFocus
                   />
-                  <Button type="submit" primary>
-                    {query.id ? "Update" : "Save"}
-                  </Button>
+                  <div class="ui buttons" style={{ padding: "1rem" }}>
+                    <button class="ui positive button">Save</button>
+                  </div>
                 </Form>
               )}
             </div>
